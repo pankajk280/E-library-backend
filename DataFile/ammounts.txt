@@ -1,0 +1,11 @@
+$ 4,336,373
+Open Invoices
+ Bills
+$ 3,213,723
+Unpaid Bills
+ Bank Balance
+$ 1,405,838
+Current Balance
+ Credit Card Balance
+$ 430,550
+Current Balance

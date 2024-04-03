@@ -1,0 +1,2 @@
+NAME,EMAIL,PASSWORD,user_type
+Mahesh,dalle@gmail.com,mahesh,20
