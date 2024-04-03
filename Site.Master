@@ -1,0 +1,224 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Library.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+
+
+
+</head>
+<body>
+    <form runat="server">
+
+        <div>
+
+
+    <!----Navbar-->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="Images/books.png" width="50" height="50" />
+            E-Library 
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <asp:LinkButton class="nav-link active" ID="LinkButton5" runat="server" OnClick="home_Page">Home
+                    </asp:LinkButton>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">About US</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Terms</a>
+                </li>
+                <li>
+                        <div class="container-fluid">
+                            <div  role="search">
+                                <input class="form-control me-2 rounded-pill d-block" type="search" placeholder="Search" id="txtSearch" aria-label="Search" autocomplete="off" />
+                                <div id="searchDiv"> </div>
+
+                            </div>
+                        </div>   
+                </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <asp:LinkButton class="nav-link" ID="LinkButton0" runat="server" OnClick="view_books">View Books
+                    </asp:LinkButton>
+                </li>
+                <li class="nav-item">
+                    <asp:LinkButton class="nav-link" ID="LinkButton1" runat="server" OnClick="u_login">User Login
+                    </asp:LinkButton>
+                </li>
+                <li class="nav-item">
+                    <asp:LinkButton class="nav-link" ID="LinkButton2" runat="server" OnClick="u_signup">Sign Up
+                    </asp:LinkButton>
+                </li>
+                <li class="nav-item">
+                    <asp:LinkButton class="nav-link" ID="LinkButton3" runat="server" OnClick="u_logout" Visible="False">Logout
+                    </asp:LinkButton>
+                </li>
+                <li class="nav-item">
+                    <asp:LinkButton class="nav-link" ID="LinkButton4" runat="server" Visible="False">Hello User
+                    </asp:LinkButton>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div>
+    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <hr />
+    <footer>
+        <div id="footer1" class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                    <p>
+                        <asp:LinkButton ID="LinkButton6" runat="server" CssClass="text-decoration-none text-dark" OnClick="admin_login">Admin Login</asp:LinkButton>&nbsp;
+                        <asp:LinkButton ID="LinkButton7" runat="server" CssClass="text-decoration-none" Visible="False">Author Management</asp:LinkButton>&nbsp;
+                        <asp:LinkButton ID="LinkButton8" runat="server" CssClass="text-decoration-none" Visible="False">Publisher Management</asp:LinkButton>&nbsp;
+                        <asp:LinkButton ID="LinkButton9" runat="server" CssClass="text-decoration-none" Visible="False">Book Inventory</asp:LinkButton>&nbsp;
+                        <asp:LinkButton ID="LinkButton10" runat="server" CssClass="text-decoration-none" Visible="False">Book Inventory</asp:LinkButton>&nbsp;
+                    </p>
+                    <p>&copy; <%: DateTime.Now.Year %> - All rights reserved</p>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </footer>
+</div>
+
+
+
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        
+    </form>
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+    </asp:PlaceHolder>
+    <script>
+        $("#txtSearch").keyup(function () {
+            var searchInput = $("#txtSearch").val();
+            var searchDiv = $("#searchDiv");
+            if (!searchInput.trim() == "") {
+                $.ajax({
+                    type: 'POST',
+                    url: "WebServices/GlobalSearch.asmx/Search",
+                    contentType: "application/json",
+                    data: JSON.stringify({ 'inputVal': searchInput }),
+                    success: function (res) {
+                        console.log(res.d);
+                        searchDiv.empty();
+                        if (res.d.length > 0) {
+                            $.each(res.d, function (index, item) {
+                                var resultDiv = $("<a>").text(item.suggestion);
+                                resultDiv.append("<hr>") 
+                                if (item.type == 'Link') {
+                                    resultDiv.data("url", item.link);
+                                    resultDiv.click(function () {
+                                        var link = $(this).data("url");
+                                        window.location.href = link;
+                                    })
+                                }
+                                else {
+                                    var url = new URLSearchParams(window.location.search);
+                                    url.set('title', item.link);
+                                    var newUrl = "BookDescription.aspx?" + url.toString();
+                                    resultDiv.data("url", newUrl);
+                                    resultDiv.click(function () {
+                                        var link = $(this).data("url");
+                                        window.location.href = link;
+                                    })
+
+                                }
+                                
+                                
+                                searchDiv.append(resultDiv);
+                            });
+                            searchDiv.css({
+                                'z-index': 9999,
+                                'position': 'absolute',
+                                'background': 'white',
+                                'border': '1px solid black',
+                                'border-radius': '5px',
+                                'text-align':'center'
+                                
+                            });
+                            searchDiv.show();
+                        } else {
+                            searchDiv.hide();
+                        }
+                    },
+                    error: function (err) {
+                        if (err.responseJSON && err.responseJSON.message) {
+                            alert(err.responseJSON.message);
+                        } else if (err.responseText) {
+                            alert(err.responseText);
+                        } else {
+                            alert("An error occurred");
+                        }
+                    }
+
+                });
+            }
+            
+        })
+        $(document).click(function () {
+            var searchDiv = $("#searchDiv");
+            if (!searchDiv.is(event.target) && searchDiv.has(event.target).length === 0) {
+                searchDiv.hide();
+            }
+        })
+    </script>
+
+
+
+</body>
+</html>
